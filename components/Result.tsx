@@ -1,5 +1,6 @@
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
+import html2canvas from 'html2canvas';
 import { QuoteData, Preferences, FontStyle, CardStyle, BorderStyle } from '../types';
 
 interface ResultProps {
@@ -76,21 +77,30 @@ const Result: React.FC<ResultProps> = ({ quote, isLoading, onBack, onNewQuote, p
     }
   };
 
-  const handleSaveToGallery = () => {
-    if (!quote) return;
+  const handleSaveToGallery = async () => {
+    if (!quote || !cardRef.current) return;
     setIsSaving(true);
     
-    // Simulate a complex generation process
-    setTimeout(() => {
-      const element = document.createElement("a");
-      const file = new Blob([`VALENTINE'S VIBE GIFT\n\n"${quote.text}"\n\n— ${quote.author}\n\nCustomized with: ${prefs.bloom}, ${prefs.companion}, ${prefs.treat}`], { type: 'text/plain' });
-      element.href = URL.createObjectURL(file);
-      element.download = `valentine-gift-${Date.now()}.txt`;
-      document.body.appendChild(element);
-      element.click();
-      document.body.removeChild(element);
+    try {
+      // Use html2canvas to capture the card ref
+      // scale: 2 for better resolution
+      const canvas = await html2canvas(cardRef.current, {
+        scale: 2,
+        backgroundColor: null,
+        logging: false,
+        useCORS: true
+      });
+      
+      const image = canvas.toDataURL("image/png", 1.0);
+      const link = document.createElement("a");
+      link.download = `valentine-vibe-${Date.now()}.png`;
+      link.href = image;
+      link.click();
+    } catch (err) {
+      console.error("Failed to capture image:", err);
+    } finally {
       setIsSaving(false);
-    }, 1500);
+    }
   };
 
   const getCardClasses = () => {
@@ -262,12 +272,12 @@ const Result: React.FC<ResultProps> = ({ quote, isLoading, onBack, onNewQuote, p
           {isSaving ? (
             <div className="flex items-center gap-2">
               <div className="size-5 rounded-full border-2 border-white border-t-transparent animate-spin"></div>
-              <span>Saving...</span>
+              <span>Capturing...</span>
             </div>
           ) : (
             <>
-              <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">download</span>
-              Finalize & Save
+              <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">photo_camera</span>
+              Finalize & Save Photo
               <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
             </>
           )}
