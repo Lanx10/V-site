@@ -148,8 +148,8 @@ const Result: React.FC<ResultProps> = ({ quote, isLoading, onBack, onNewQuote, p
               <span className="material-symbols-outlined absolute text-primary animate-pulse text-3xl">favorite</span>
             </div>
             <div className="text-center space-y-2">
-              <p className="text-primary font-bold text-xl">Crafting your message...</p>
-              <p className="text-black/40 text-sm font-medium animate-pulse">Consulting the poets and dreamers</p>
+              <p className="text-primary font-bold text-xl">Curating your message...</p>
+              <p className="text-black/40 text-sm font-medium animate-pulse">Personalizing with your favorites</p>
             </div>
           </div>
         ) : quote && (
@@ -171,7 +171,7 @@ const Result: React.FC<ResultProps> = ({ quote, isLoading, onBack, onNewQuote, p
                     className="size-16 rounded-full flex items-center justify-center transition-all duration-500 shadow-inner float-animation"
                     style={{ backgroundColor: `${prefs.color}15` }}
                   >
-                    <span className="material-symbols-outlined text-4xl" style={{ color: prefs.color }}>auto_awesome</span>
+                    <span className="material-symbols-outlined text-4xl" style={{ color: prefs.color }}>favorite</span>
                   </div>
                 </div>
 
@@ -262,7 +262,7 @@ const Result: React.FC<ResultProps> = ({ quote, isLoading, onBack, onNewQuote, p
           {isSaving ? (
             <div className="flex items-center gap-2">
               <div className="size-5 rounded-full border-2 border-white border-t-transparent animate-spin"></div>
-              <span>Processing...</span>
+              <span>Saving...</span>
             </div>
           ) : (
             <>

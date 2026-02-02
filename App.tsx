@@ -4,8 +4,7 @@ import { Screen, Preferences, QuoteData } from './types';
 import Landing from './components/Landing';
 import PreferencesScreen from './components/PreferencesScreen';
 import Result from './components/Result';
-// Fix: Use the Gemini-powered service instead of the static library
-import { generatePersonalizedQuote as getPersonalizedQuote } from './geminiService';
+import { getPersonalizedQuote } from './quoteService';
 
 const App: React.FC = () => {
   const [currentScreen, setCurrentScreen] = useState<Screen>(Screen.LANDING);

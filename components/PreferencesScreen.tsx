@@ -123,7 +123,7 @@ const PreferencesScreen: React.FC<PreferencesScreenProps> = ({ onBack, onGenerat
       <div className={`px-4 py-6 z-10 transition-all duration-700 delay-100 ${isMounted ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
         <h1 className="font-serif italic text-4xl font-bold text-center transition-colors duration-500" style={{ color: selectedColor }}>Craft Your Moment</h1>
         <p className="text-[#181113]/70 text-base font-normal pt-2 text-center max-w-xs mx-auto">
-          Tell us what you love, and we'll inspire your heart.
+          Choose your favorite details to curate your special message.
         </p>
       </div>
 
@@ -246,8 +246,8 @@ const PreferencesScreen: React.FC<PreferencesScreenProps> = ({ onBack, onGenerat
             style={{ backgroundColor: selectedColor, boxShadow: `0 10px 25px -5px ${selectedColor}60` }}
           >
             <span className="z-10 flex items-center gap-2">
-              Generate My Message
-              <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">auto_awesome</span>
+              Create My Card
+              <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">favorite</span>
             </span>
             <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
           </button>
