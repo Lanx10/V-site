@@ -149,7 +149,7 @@ const Result: React.FC<ResultProps> = ({ quote, isLoading, onBack, onNewQuote, p
             </div>
             <div className="text-center space-y-2">
               <p className="text-primary font-bold text-xl">Curating your message...</p>
-              <p className="text-black/40 text-sm font-medium animate-pulse">Personalizing with your favorites</p>
+              <p className="text-black/40 text-sm font-medium animate-pulse">Wait a moment while we craft your vibe</p>
             </div>
           </div>
         ) : quote && (
